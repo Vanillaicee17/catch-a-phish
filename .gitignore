@@ -1,0 +1,12 @@
+backend/target/
+dist/
+dist-test/
+__pycache__/
+*.pyc
+.env
+.env.*
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example

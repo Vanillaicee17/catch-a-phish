@@ -1,0 +1,16 @@
+aws_region          = "ap-south-1"
+app_name            = "catch-a-phish"
+github_owner        = "Vanillaicee17"
+github_repository   = "catch-a-phish"
+github_branch       = "main"
+vpc_cidr            = "10.42.0.0/16"
+ecr_repository_name = "catch-a-phish-backend"
+enable_ecs_service  = false
+
+ecs_environment_variables = {
+  RUST_LOG = "info"
+}
+
+tags = {
+  Environment = "prod"
+}

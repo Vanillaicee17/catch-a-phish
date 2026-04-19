@@ -1,0 +1,38 @@
+{
+    "name": "Catch-A-Phish",
+    "description": "Base Level Extension",
+    "version": "1.4",
+    "manifest_version": 2,
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "amey.flakey@gmail.com",
+            "strict_min_version": "112.0"
+        }
+    },
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "storage"
+    ],
+    "icons": {
+        "16": "icon16.png",
+        "32": "icon32.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "16": "icon16.png",
+            "32": "icon32.png",
+            "48": "icon48.png",
+            "128": "icon128.png"
+        },
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    }
+}
