@@ -36,4 +36,4 @@ url = "2.5"
 scraper = "0.18"
 
 # Regex
-regex = "1.10"
+regex = "1.12"
