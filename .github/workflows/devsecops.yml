@@ -110,7 +110,7 @@ jobs:
 
       - name: Run Trivy JSON scan
         continue-on-error: true
-        uses: aquasecurity/trivy-action@57a97c7
+        uses: aquasecurity/trivy-action@0.35.0
         with:
           image-ref: catch-a-phish-backend:security-scan
           format: json
