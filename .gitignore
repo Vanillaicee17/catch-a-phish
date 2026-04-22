@@ -10,3 +10,6 @@ __pycache__/
 *.tfstate.*
 *.tfvars
 !*.tfvars.example
+security-reports/
+*.md
+!README.md

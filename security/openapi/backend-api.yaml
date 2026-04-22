@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: Catch a Phish Backend API
+  version: 1.0.0
+  description: OpenAPI definition used by the DevSecOps DAST job.
+servers:
+  - url: http://127.0.0.1:8000
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      operationId: getHealth
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                required:
+                  - status
+  /receive_url:
+    post:
+      summary: Analyze a URL for phishing indicators
+      operationId: receiveUrl
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  example: https://example.com
+              required:
+                - url
+      responses:
+        "200":
+          description: URL classification result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    example: legitimate
+                required:
+                  - result
+        "500":
+          description: Backend processing error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    example: error
+                required:
+                  - result
