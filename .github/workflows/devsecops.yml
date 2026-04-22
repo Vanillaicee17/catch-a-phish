@@ -80,7 +80,19 @@ jobs:
             echo '{"results":[],"errors":["Semgrep did not produce JSON output."]}' > security-reports/sast/semgrep.json
           fi
           if [ ! -s security-reports/sast/semgrep.sarif ]; then
-            echo '{"version":"2.1.0","runs":[]}' > security-reports/sast/semgrep.sarif
+            echo '{
+              "version": "2.1.0",
+              "runs": [{
+                "tool": {
+                  "driver": {
+                    "name": "semgrep",
+                    "informationUri": "https://semgrep.dev",
+                    "rules": []
+                  }
+                },
+                "results": []
+              }]
+            }' > security-reports/sast/semgrep.sarif
           fi
 
       - name: Upload SAST artifact
@@ -92,7 +104,7 @@ jobs:
 
       - name: Upload SAST SARIF
         if: always()
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: security-reports/sast/semgrep.sarif
           category: semgrep
@@ -132,13 +144,21 @@ jobs:
         if: always()
         run: |
           mkdir -p security-reports/container
-          if [ ! -s security-reports/container/trivy-image.json ]; then
-            echo '{"Results":[]}' > security-reports/container/trivy-image.json
-          fi
           if [ ! -s security-reports/container/trivy-image.sarif ]; then
-            echo '{"version":"2.1.0","runs":[]}' > security-reports/container/trivy-image.sarif
+            echo '{
+              "version": "2.1.0",
+              "runs": [{
+                "tool": {
+                  "driver": {
+                    "name": "trivy",
+                    "informationUri": "https://github.com/aquasecurity/trivy",
+                    "rules": []
+                  }
+                },
+                "results": []
+              }]
+            }' > security-reports/container/trivy-image.sarif
           fi
-
       - name: Upload container scan artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -148,7 +168,7 @@ jobs:
 
       - name: Upload container scan SARIF
         if: always()
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: security-reports/container/trivy-image.sarif
           category: trivy-image
@@ -184,11 +204,20 @@ jobs:
         if: always()
         run: |
           mkdir -p security-reports/secrets
-          if [ ! -s security-reports/secrets/gitleaks.json ]; then
-            echo '[]' > security-reports/secrets/gitleaks.json
-          fi
           if [ ! -s security-reports/secrets/gitleaks.sarif ]; then
-            echo '{"version":"2.1.0","runs":[]}' > security-reports/secrets/gitleaks.sarif
+            echo '{
+              "version": "2.1.0",
+              "runs": [{
+                "tool": {
+                  "driver": {
+                    "name": "gitleaks",
+                    "informationUri": "https://github.com/gitleaks/gitleaks",
+                    "rules": []
+                  }
+                },
+                "results": []
+              }]
+            }' > security-reports/secrets/gitleaks.sarif
           fi
 
       - name: Upload secret scan artifact
@@ -200,7 +229,7 @@ jobs:
 
       - name: Upload secret scan SARIF
         if: always()
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: security-reports/secrets/gitleaks.sarif
           category: gitleaks
