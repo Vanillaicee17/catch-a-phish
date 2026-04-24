@@ -47,7 +47,7 @@ jobs:
 
       - name: Upload SCA artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: security-sca
           path: security-reports/sca/
@@ -97,7 +97,7 @@ jobs:
 
       - name: Upload SAST artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: security-sast
           path: security-reports/sast/
@@ -161,7 +161,7 @@ jobs:
           fi
       - name: Upload container scan artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: security-container
           path: security-reports/container/
@@ -222,7 +222,7 @@ jobs:
 
       - name: Upload secret scan artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: security-secrets
           path: security-reports/secrets/
@@ -305,7 +305,7 @@ jobs:
 
       - name: Upload DAST artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: security-dast
           path: security-reports/dast/
@@ -336,7 +336,7 @@ jobs:
 
       - name: Upload branch protection artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: security-branch-protection
           path: security-reports/branch-protection/
@@ -378,7 +378,7 @@ jobs:
         run: cat security-reports/consolidated/devsecops-report.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload consolidated report artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: security-consolidated-report
           path: security-reports/consolidated/
