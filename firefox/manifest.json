@@ -1,7 +1,7 @@
 {
     "name": "Catch-A-Phish",
     "description": "Base Level Extension",
-    "version": "1.4",
+    "version": "1.5",
     "manifest_version": 2,
     "browser_specific_settings": {
         "gecko": {
