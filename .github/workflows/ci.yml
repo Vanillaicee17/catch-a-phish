@@ -51,7 +51,7 @@ jobs:
           python-version: "3.12"
 
       - name: Build extension bundles
-        run: python scripts/build_extensions.py --api-base-url https://ci.example.invalid --output-dir dist
+        run: python scripts/build_extensions.py --api-base-url http://catch-a-phish-alb-815677313.ap-south-1.elb.amazonaws.com --output-dir dist
 
       - name: Upload extension artifacts
         uses: actions/upload-artifact@v4
